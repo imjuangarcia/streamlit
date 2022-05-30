@@ -18,6 +18,11 @@
 import React, { ReactElement } from "react"
 import { StyledList, StyledEmptyState, OptionListProps } from "baseui/menu"
 import { FixedSizeList } from "react-window"
+import Tooltip, {
+  Placement,
+  OverflowTooltip,
+  StyledEllipsizedDiv,
+} from "src/components/shared/Tooltip"
 import {
   ThemedStyledDropdownListItem,
   StyledTruncateText,
@@ -48,7 +53,9 @@ function FixedSizeListItem(props: FixedSizeListItemProps): ReactElement {
       style={style}
       {...restChildProps}
     >
-      <StyledTruncateText>{item.label}</StyledTruncateText>
+      <OverflowTooltip content={item.label} placement={Placement.AUTO}>
+        <StyledTruncateText>{item.label}</StyledTruncateText>
+      </OverflowTooltip>
     </ThemedStyledDropdownListItem>
   )
 }
